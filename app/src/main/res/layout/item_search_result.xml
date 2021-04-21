@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="eventListener"
+            type="com.kakao.mobility.ui.search.OnPokemonItemEvent" />
+        <variable
+            name="pokemonName"
+            type="com.kakao.mobility.model.dto.PokemonName" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="32dp"
+        android:paddingEnd="32dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp"
+        android:background="@drawable/background_item"
+        android:onClick="@{view -> eventListener.onPokemonSelected(pokemonName.id)}">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/first_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{pokemonName.names[0]}"
+            android:textSize="21sp"
+            android:textColor="@android:color/black"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/second_name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Fist Name of pokemon"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/second_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/light_black"
+            android:textSize="16sp"
+            android:layout_marginTop="2dp"
+            android:text="@{pokemonName.names[1]}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/first_name"
+            tools:text="Second Name of pokemon"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

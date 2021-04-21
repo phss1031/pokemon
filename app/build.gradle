@@ -1,0 +1,89 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+}
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.3"
+
+    defaultConfig {
+        applicationId "com.kakao.mobility"
+        minSdkVersion 23
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    signingConfigs {
+        debugSigning {
+            storeFile file("pokemonSigningKey.jks")
+            storePassword "kakaomobility"
+            keyAlias "mobility"
+            keyPassword "kakaomobility"
+        }
+    }
+
+    buildFeatures {
+        dataBinding true
+    }
+
+    buildTypes {
+        debug{
+            buildConfigField "String", "Host", '"https://pokeapi.co/api/v2/"'
+            buildConfigField "String", "SearchHost", '"https://demo0928971.mockable.io/"'
+            signingConfig signingConfigs.debugSigning
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField "String", "Host", '"https://pokeapi.co/api/v2/"'
+            buildConfigField "String", "SearchHost", '"https://demo0928971.mockable.io/"'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+def koin_version = "2.2.2"
+def retrofit_version = "2.9.0"
+def glide_version = "4.11.0"
+def okhhtp_version = "4.8.1"
+def lottie_version = "3.4.1"
+def data_binding_version = "3.1.4"
+def lifecycle_version = "2.3.1"
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+
+    implementation 'androidx.core:core-ktx:1.3.2'
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'com.google.android.material:material:1.3.0'
+    implementation 'com.google.android.gms:play-services-maps:17.0.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
+
+    implementation "org.koin:koin-core:$koin_version"
+    implementation "org.koin:koin-android:$koin_version"
+    implementation "org.koin:koin-androidx-viewmodel:$koin_version"
+
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+    implementation "com.squareup.okhttp3:okhttp:$okhhtp_version"
+    implementation "com.squareup.okhttp3:logging-interceptor:$okhhtp_version"
+
+    implementation "com.github.bumptech.glide:glide:$glide_version"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.1"
+    implementation "com.airbnb.android:lottie:$lottie_version"
+
+    kapt "com.android.databinding:compiler:$data_binding_version"
+}

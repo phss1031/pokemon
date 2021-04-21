@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.kakao.mobility.ui.detail.PokemonDetailViewModel" />
+    </data>
+
+    <ViewFlipper
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inAnimation="@anim/fade_in"
+        android:outAnimation="@anim/fade_out"
+        app:viewStatus="@{viewModel.viewStatus}">
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="32dp">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/first_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{viewModel.pokemonName.names[0]}"
+                android:textColor="@android:color/black"
+                android:textSize="21sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/second_name"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Fist Name of pokemon" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/second_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="@{viewModel.pokemonName.names[1]}"
+                android:textColor="@color/light_black"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toTopOf="@+id/front_image"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/first_name"
+                tools:text="Second Name of pokemon" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/front_image"
+                android:layout_width="96dp"
+                android:layout_height="96dp"
+                android:layout_marginTop="18dp"
+                android:adjustViewBounds="true"
+                android:background="@color/divider"
+                app:imageUrl="@{viewModel.pokemon.sprites.front_default}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/second_name"
+                tools:src="@tools:sample/avatars" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/height"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="2dp"
+                android:text="@{@string/pokemon_height_label_format(viewModel.pokemon.height)}"
+                android:textColor="@color/light_black"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/front_image"
+                app:layout_constraintTop_toTopOf="@+id/front_image"
+                tools:text="Height : 299cm" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/weight"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:text="@{@string/pokemon_weight_label_format(viewModel.pokemon.weight)}"
+                android:textColor="@color/light_black"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/front_image"
+                app:layout_constraintTop_toBottomOf="@+id/height"
+                tools:text="weight : 999kg" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/go_map"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:background="@drawable/background_button"
+                android:enabled="@{!viewModel.pokemonLocations.isEmpty()}"
+                android:gravity="center"
+                android:paddingTop="12dp"
+                android:paddingBottom="12dp"
+                android:text="@string/go_map"
+                android:textColor="@color/foreground_button"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/front_image"
+                tools:text="Map" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ViewFlipper>
+</layout>

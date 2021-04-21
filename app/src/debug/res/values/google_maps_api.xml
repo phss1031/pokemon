@@ -1,0 +1,24 @@
+<resources>
+    <!--
+    TODO: Before you run your application, you need a Google Maps API key.
+
+    To get one, follow this link, follow the directions and press "Create" at the end:
+
+    https://console.developers.google.com/flows/enableapi?apiid=maps_android_backend&keyType=CLIENT_SIDE_ANDROID&r=5A:AB:1B:9E:AF:EF:93:34:40:6E:76:4C:95:A2:54:19:02:4B:04:99%3Bcom.kakao.mobility
+
+    You can also add your credentials to an existing key, using these values:
+
+    Package name:
+    com.kakao.mobility
+
+    SHA-1 certificate fingerprint:
+    5A:AB:1B:9E:AF:EF:93:34:40:6E:76:4C:95:A2:54:19:02:4B:04:99
+
+    Alternatively, follow the directions here:
+    https://developers.google.com/maps/documentation/android/start#get-key
+
+    Once you have your key (it starts with "AIza"), replace the "google_maps_key"
+    string in this file.
+    -->
+    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyCxqlTHddW6DgfPazPLjoXxzJh0CaLS9I8</string>
+</resources>

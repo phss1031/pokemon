@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="light_black">#464646</color>
+    <color name="divider">#EFEFEF</color>
+    <color name="color_light_ripple">#88888888</color>
+    <color name="background_button">#1D2039</color>
+    <color name="background_disable_button">#601D2039</color>
+    <color name="foreground_button">#EED50A</color>
+    <color name="query_hint_color">#66EED50A</color>
+</resources>

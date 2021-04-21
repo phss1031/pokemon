@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.kakao.mobility.ui.main.MainViewModel" />
+    </data>
+
+    <ViewFlipper
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:viewStatus="@{viewModel.viewStatus}">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/search_result_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:verticalDivider="@{@drawable/divider}"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/empty_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:textSize="23sp"
+            android:padding="32dp"
+            android:textColor="@color/background_button"
+            android:text="@string/empty_search_result" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/error_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="32dp"
+            android:gravity="center"
+            android:textSize="23sp"
+            android:textColor="@color/background_button"
+            android:text="@string/empty_error" />
+    </ViewFlipper>
+</layout>
